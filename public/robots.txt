@@ -1,0 +1,28 @@
+# robots.txt for Qalimoz Groups
+# https://qalimoz.com/robots.txt
+
+# Allow all crawlers (default)
+User-agent: *
+Allow: /
+
+# Allow AI crawlers explicitly for AEO/GEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Disallow admin/internal paths (if applicable)
+# Disallow: /internal/
+
+# Sitemap
+Sitemap: https://qalimoz.com/sitemap.xml
