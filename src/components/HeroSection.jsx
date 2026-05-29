@@ -255,6 +255,7 @@ export default function HeroSection({ wa }) {
       if (!releasedOnce.current) {
         const el = wrapperRef.current;
         if (el) {
+          void document.body.offsetHeight;
           const rect = el.getBoundingClientRect();
           const scrolled = -rect.top;
           const total = el.offsetHeight - window.innerHeight;
@@ -415,7 +416,7 @@ export default function HeroSection({ wa }) {
           x5-playsinline="true"
           preload="auto"
           src={videoSrc}
-          style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none', overflow: 'hidden' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.01, pointerEvents: 'none', objectFit: 'cover' }}
           onLoadedData={onVideoReady}
         />
         <canvas
