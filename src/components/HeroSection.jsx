@@ -36,6 +36,7 @@ export default function HeroSection({ wa }) {
   const resizeTimer = useRef(null);
   const startOffsetRef = useRef(0);
   const scrollEnded = useRef(true);
+  const lastScrollChange = useRef(0);
 
   const orientation = activeOrientation.current;
   const isLandscapeOrientation = isLandscape(orientation);
@@ -167,7 +168,7 @@ export default function HeroSection({ wa }) {
 
     function checkBottom(el) {
       if (releasedOnce.current) return false;
-      if (el.getBoundingClientRect().bottom <= window.innerHeight + 1) {
+      if (window.scrollY >= el.offsetTop + el.offsetHeight - window.innerHeight - 1) {
         targetProgress.current = 1.0;
         return true;
       }
@@ -177,8 +178,7 @@ export default function HeroSection({ wa }) {
     function onScroll() {
       const el = wrapperRef.current;
       if (!el || releasedOnce.current) return;
-      const top = el.getBoundingClientRect().top;
-      const scrolled = -top;
+      const scrolled = window.scrollY - el.offsetTop;
       const total = el.offsetHeight - window.innerHeight;
       if (total <= 0) {
         targetProgress.current = 1.0;
@@ -187,6 +187,7 @@ export default function HeroSection({ wa }) {
         targetProgress.current = Math.min(Math.max(scrolled / total, 0), 1);
       }
       keepVideoAlive();
+      lastScrollChange.current = performance.now();
       if (scrollEnded.current) {
         scrollEnded.current = false;
         if (phaseRef.current > 0) tryAdvance();
@@ -220,8 +221,7 @@ export default function HeroSection({ wa }) {
     function onScrollEnd() {
       const el = wrapperRef.current;
       if (!el || releasedOnce.current) return;
-      const top = el.getBoundingClientRect().top;
-      const scrolled = -top;
+      const scrolled = window.scrollY - el.offsetTop;
       const total = el.offsetHeight - window.innerHeight;
       if (total > 0 && scrolled / total > 0.85) {
         forceComplete();
@@ -252,17 +252,32 @@ export default function HeroSection({ wa }) {
     function loop() {
       if (releasedOnce.current) return;
 
-      // iOS fallback: poll actual scroll position every frame
+      // iOS fallback: poll actual scroll position every frame (window.scrollY is always fresh on iOS)
       if (!releasedOnce.current) {
         const el = wrapperRef.current;
         if (el) {
-          void document.body.offsetHeight;
-          const rect = el.getBoundingClientRect();
-          const scrolled = -rect.top;
+          const scrolled = window.scrollY - el.offsetTop;
           const total = el.offsetHeight - window.innerHeight;
           if (total > 0) {
             const raw = Math.min(Math.max(scrolled / total, 0), 1);
             if (raw > targetProgress.current) targetProgress.current = raw;
+          }
+        }
+      }
+
+      // Scroll-end fallback detection (iOS may not fire scrollend event)
+      if (!scrollEnded.current && !releasedOnce.current) {
+        if (performance.now() - lastScrollChange.current > 400) {
+          scrollEnded.current = true;
+          const el = wrapperRef.current;
+          if (el) {
+            const scrolled = window.scrollY - el.offsetTop;
+            const total = el.offsetHeight - window.innerHeight;
+            if (total > 0 && scrolled / total > 0.85) {
+              forceComplete();
+            } else if (phaseRef.current > 0) {
+              tryAdvance();
+            }
           }
         }
       }
