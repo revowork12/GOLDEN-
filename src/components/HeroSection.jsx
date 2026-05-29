@@ -70,7 +70,8 @@ export default function HeroSection({ wa }) {
   function drawVideoFrame() {
     const canvas = canvasRef.current;
     const video = videoRef.current;
-    if (!canvas || !video || durationRef.current === 0) return;
+    if (!canvas || !video) return;
+    if (video.videoWidth === 0 || video.videoHeight === 0) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const { dx, dy, dw, dh } = cropRef.current;
@@ -84,12 +85,12 @@ export default function HeroSection({ wa }) {
     durationRef.current = video.duration || 0;
     const vw = video.videoWidth;
     const vh = video.videoHeight;
-    if (vw === 0 || vh === 0) return;
-    const dur = durationRef.current;
-    startOffsetRef.current = !isLandscape(activeOrientation.current) && dur > 0.49
-      ? 0.49 : 0;
-    recalcCrop(vw, vh);
-    setupCanvas();
+    if (vw > 0 && vh > 0) {
+      startOffsetRef.current = !isLandscape(activeOrientation.current) && durationRef.current > 0.49
+        ? 0.49 : 0;
+      recalcCrop(vw, vh);
+      setupCanvas();
+    }
     video.play().catch(() => {});
     setIsReady(true);
   }
@@ -277,6 +278,14 @@ export default function HeroSection({ wa }) {
       if (!video) return;
       keepVideoAlive();
 
+      if (video.videoWidth > 0 && video.videoHeight > 0 && durationRef.current === 0) {
+        durationRef.current = video.duration || 0;
+        startOffsetRef.current = !isLandscape(activeOrientation.current) && durationRef.current > 0.49
+          ? 0.49 : 0;
+        recalcCrop(video.videoWidth, video.videoHeight);
+        setupCanvas();
+      }
+
       if (sp < 1.0) {
         phaseRef.current = 0;
         if (!canvasActive) setCanvasActive(true);
@@ -411,6 +420,7 @@ export default function HeroSection({ wa }) {
         <video
           ref={videoRef}
           muted
+          autoPlay
           playsInline
           webkit-playsinline="true"
           x5-playsinline="true"
