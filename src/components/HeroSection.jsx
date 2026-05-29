@@ -117,6 +117,13 @@ export default function HeroSection({ wa }) {
     };
   }, [isReady]);
 
+  // Safety: force isReady(true) after 3s if video metadata never loaded on iOS
+  useEffect(() => {
+    if (isReady) return;
+    const timer = setTimeout(() => setIsReady(true), 3000);
+    return () => clearTimeout(timer);
+  }, [isReady]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -244,6 +251,20 @@ export default function HeroSection({ wa }) {
     function loop() {
       if (releasedOnce.current) return;
 
+      // iOS fallback: poll actual scroll position every frame
+      if (!releasedOnce.current) {
+        const el = wrapperRef.current;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          const scrolled = -rect.top;
+          const total = el.offsetHeight - window.innerHeight;
+          if (total > 0) {
+            const raw = Math.min(Math.max(scrolled / total, 0), 1);
+            if (raw > targetProgress.current) targetProgress.current = raw;
+          }
+        }
+      }
+
       smoothProgress.current += (targetProgress.current - smoothProgress.current) * 0.25;
 
       if (targetProgress.current >= 0.85) {
@@ -259,11 +280,15 @@ export default function HeroSection({ wa }) {
         phaseRef.current = 0;
         if (!canvasActive) setCanvasActive(true);
         const so = startOffsetRef.current;
-        video.currentTime = so + sp * (durationRef.current - so);
+        if (durationRef.current > 0) {
+          video.currentTime = so + sp * (durationRef.current - so);
+        }
         drawVideoFrame();
         if (textVisible) setTextVisible(false);
       } else {
-        video.currentTime = durationRef.current;
+        if (durationRef.current > 0) {
+          video.currentTime = durationRef.current;
+        }
         if (canvasActive) setCanvasActive(false);
         if (phaseRef.current === 0) {
           phaseRef.current = 1;
@@ -274,6 +299,11 @@ export default function HeroSection({ wa }) {
           heroRef.current.style.backgroundSize = 'cover';
           heroRef.current.style.backgroundPosition = 'center';
         }
+      }
+
+      // Autonomous phase advancement (no scroll events needed on iOS)
+      if (phaseRef.current >= 1) {
+        tryAdvance();
       }
 
       rafId.current = requestAnimationFrame(loop);
@@ -292,7 +322,13 @@ export default function HeroSection({ wa }) {
     }
     window.addEventListener('orientationchange', onOrientationChange);
 
+    // Safety: force release after 8s regardless of state
+    const safetyTimer = setTimeout(() => {
+      if (!releasedOnce.current) release();
+    }, 8000);
+
     return () => {
+      clearTimeout(safetyTimer);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('scrollend', onScrollEnd);
       window.removeEventListener('touchstart', onTouchStart);
@@ -374,12 +410,12 @@ export default function HeroSection({ wa }) {
         <video
           ref={videoRef}
           muted
-          playsinline
+          playsInline
           webkit-playsinline="true"
           x5-playsinline="true"
           preload="auto"
           src={videoSrc}
-          style={{ display: 'none' }}
+          style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none', overflow: 'hidden' }}
           onLoadedData={onVideoReady}
         />
         <canvas
