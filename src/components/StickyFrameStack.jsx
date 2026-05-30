@@ -154,7 +154,7 @@ export default function StickyFrameStack({ wa }) {
               border: '1px solid rgba(188,143,75,0.25)',
               borderRadius: '100px'
             }}>
-              5+ Years of Craftsmanship
+              10+ Years of Craftsmanship
             </div>
             <h1 style={{
               fontFamily: "var(--font-display)",

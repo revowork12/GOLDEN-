@@ -486,7 +486,7 @@ export default function HeroSection({ wa }) {
               transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
               transitionDelay: '0ms'
             }}>
-              5+ Years of Craftsmanship
+              10+ Years of Craftsmanship
             </div>
             <h1 style={{
               fontFamily: "var(--font-display)",

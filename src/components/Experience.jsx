@@ -31,7 +31,7 @@ export default function Experience() {
         <span className="experience-eyebrow">Our Legacy</span>
         <div className="experience-display">
           <div className="experience-stat">
-            <span className="experience-num"><span data-count="5">0</span>+</span>
+            <span className="experience-num"><span data-count="10">0</span>+</span>
             <span className="experience-label">Years of Craftsmanship</span>
           </div>
           <div className="experience-divider" aria-hidden="true"></div>
