@@ -20,7 +20,7 @@ export default function Experience() {
         }, 40);
         obs.unobserve(el);
       });
-    }, { threshold: 0.4 });
+    }, { rootMargin: '-20% 0px -30% 0px' });
     els.forEach(el => obs.observe(el));
     return () => obs.disconnect();
   }, []);

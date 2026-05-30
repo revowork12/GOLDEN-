@@ -1,10 +1,10 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { p } from '../path';
 
-const CUPBOARD_IMG = (n) => `ChatGPT Image May 30, 2026, 05_${n}.png`;
-const CUSHION_IMG = (n) => `ChatGPT Image May 30, 2026, ${n}.png`;
-const MAY26_IMG = (n) => `ChatGPT Image May 26, 2026, ${n}.png`;
-const WA_IMG = (n) => `WhatsApp Image 2026-05-30 at ${n}.jpeg`;
+const CUPBOARD_IMG = (n) => `ChatGPT Image May 30, 2026, 05_${n}.webp`;
+const CUSHION_IMG = (n) => `ChatGPT Image May 30, 2026, ${n}.webp`;
+const MAY26_IMG = (n) => `ChatGPT Image May 26, 2026, ${n}.webp`;
+const WA_IMG = (n) => `WhatsApp Image 2026-05-30 at ${n}.webp`;
 
 const categories = [
   {
