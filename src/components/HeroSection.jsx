@@ -13,14 +13,14 @@ function isLandscape(type) {
   return type.startsWith('landscape');
 }
 
-function isIOS() {
-  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 }
 
 export default function HeroSection({ wa }) {
-  const [onIOS] = useState(typeof window !== 'undefined' ? isIOS() : false);
-  if (onIOS) return <StickyFrameStack wa={wa} />;
+  const isMobile = typeof window !== 'undefined' ? isMobileDevice() : false;
+  if (isMobile) return <StickyFrameStack wa={wa} />;
   const [isReady, setIsReady] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [isReleased, setIsReleased] = useState(false);
@@ -538,3 +538,5 @@ export default function HeroSection({ wa }) {
     </>
   );
 }
+
+
