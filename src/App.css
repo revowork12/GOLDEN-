@@ -214,10 +214,10 @@ section { position: relative; }
   background-repeat: no-repeat;
 }
 @media (orientation: portrait) {
-  #home { background-image: url(/frames/stack-portrait/frame_04.webp); }
+  #home { background-image: url(/qalimoz-2/frames/stack-portrait/frame_04.webp); }
 }
 @media (orientation: landscape) {
-  #home { background-image: url(/frames/stack-landscape/frame_01.webp); }
+  #home { background-image: url(/qalimoz-2/frames/stack-landscape/frame_01.webp); }
 }
 
 .hero-sub {

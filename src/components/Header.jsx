@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { p } from '../path';
 
 export default function Header({ wa }) {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +29,7 @@ export default function Header({ wa }) {
     <header className={`header${scrolled ? ' scrolled' : ''}`} role="banner" itemScope itemType="https://schema.org/WPHeader">
       <div className="header-inner">
         <a href="#home" className="header-logo" aria-label="Qalimoz Groups — Home">
-          <img src="/logo.webp" alt="Qalimoz Groups — Custom Furniture & Interior Design" className="header-logo-img" width="220" height="220" />
+          <img src={p('/logo.webp')} alt="Qalimoz Groups — Custom Furniture & Interior Design" className="header-logo-img" width="220" height="220" />
         </a>
 
         <nav className="header-nav" aria-label="Main navigation" itemScope itemType="https://schema.org/SiteNavigationElement">

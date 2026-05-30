@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { p } from '../path';
 
 const NUM_FRAMES = 36;
 const LANDSCAPE_TOTAL_VH = 1000;
@@ -19,7 +20,7 @@ export default function StickyFrameStack({ wa }) {
   const isLandscapeOrientation = window.innerWidth > window.innerHeight;
   const totalVH = isLandscapeOrientation ? LANDSCAPE_TOTAL_VH : PORTRAIT_TOTAL_VH;
   const frameDir = isLandscapeOrientation ? 'stack-landscape' : 'stack-portrait';
-  const endFrame = isLandscapeOrientation ? '/frames/end-landscape.webp' : '/frames/end-portrait.webp';
+  const endFrame = isLandscapeOrientation ? p('/frames/end-landscape.webp') : p('/frames/end-portrait.webp');
   const frameOffset = isLandscapeOrientation ? 0 : 3;
   const ANIMATION_END = 0.60;
   const availableFrames = NUM_FRAMES - frameOffset;
@@ -94,7 +95,7 @@ export default function StickyFrameStack({ wa }) {
     firstImg.onload = () => {
       if (!releasedRef.current) drawFrame(frameOffset);
     };
-    firstImg.src = `/frames/${frameDir}/frame_${pad(frameOffset)}.webp`;
+    firstImg.src = p(`/frames/${frameDir}/frame_${pad(frameOffset)}.webp`);
     loadedImages[frameOffset] = firstImg;
     firstImg.decode().then(() => {
       if (!releasedRef.current) drawFrame(frameOffset);
@@ -107,7 +108,7 @@ export default function StickyFrameStack({ wa }) {
     for (let i = 0; i < NUM_FRAMES; i++) {
       if (i === frameOffset) continue;
       const img = new Image();
-      img.src = `/frames/${frameDir}/frame_${pad(i)}.webp`;
+      img.src = p(`/frames/${frameDir}/frame_${pad(i)}.webp`);
       loadedImages[i] = img;
       img.decode().catch(() => {});
     }

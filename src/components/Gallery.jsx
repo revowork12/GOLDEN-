@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { p } from '../path';
 
 const CUPBOARD_IMG = (n) => `ChatGPT Image May 30, 2026, 05_${n}.png`;
 const CUSHION_IMG = (n) => `ChatGPT Image May 30, 2026, ${n}.png`;
@@ -18,7 +19,7 @@ const categories = [
       { src: CUPBOARD_IMG('51_28 AM'), alt: 'Cupboard design 6' },
       { src: CUPBOARD_IMG('52_09 AM'), alt: 'Cupboard design 7' },
       { src: CUPBOARD_IMG('53_59 AM'), alt: 'Cupboard design 8' },
-      { src: '/frame-2.webp', alt: 'Cupboard design 9' },
+      { src: p('/frame-2.webp'), alt: 'Cupboard design 9' },
     ]
   },
   {
@@ -31,7 +32,7 @@ const categories = [
       { src: CUSHION_IMG('06_04_41 AM'), alt: 'Premium sofa design 4' },
       { src: CUSHION_IMG('06_05_53 AM'), alt: 'Premium sofa design 5' },
       { src: CUSHION_IMG('06_08_04 AM'), alt: 'Premium sofa design 6' },
-      { src: '/frame-7.png', alt: 'Premium sofa design 7' },
+      { src: p('/frame-7.png'), alt: 'Premium sofa design 7' },
       { src: CUSHION_IMG('06_55_54 AM'), alt: 'Premium sofa design 8' },
     ]
   },
@@ -43,7 +44,7 @@ const categories = [
       { src: CUSHION_IMG('05_55_37 AM'), alt: 'Cushion coat design 3' },
       { src: CUSHION_IMG('05_56_13 AM'), alt: 'Cushion coat design 4' },
       { src: CUSHION_IMG('06_35_06 AM'), alt: 'Cushion coat design 5' },
-      { src: '/gallery-8.webp', alt: 'Cushion coat design 6' },
+      { src: p('/gallery-8.webp'), alt: 'Cushion coat design 6' },
     ]
   },
   {

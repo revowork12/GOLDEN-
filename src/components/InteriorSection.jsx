@@ -1,10 +1,11 @@
 import React from 'react';
+import { p } from '../path';
 
 const images = [
-  { src: '/interior-1.webp', alt: 'Qalimoz interior design — modern living room transformation in Kerala' },
-  { src: '/interior-2.webp', alt: 'Qalimoz bedroom interior design with custom wardrobe and lighting' },
-  { src: '/interior-3.webp', alt: 'Qalimoz kitchen interior design with modular cabinetry' },
-  { src: '/interior-4.webp', alt: 'Qalimoz dining area interior design with bespoke furniture' },
+  { src: p('/interior-1.webp'), alt: 'Qalimoz interior design — modern living room transformation in Kerala' },
+  { src: p('/interior-2.webp'), alt: 'Qalimoz bedroom interior design with custom wardrobe and lighting' },
+  { src: p('/interior-3.webp'), alt: 'Qalimoz kitchen interior design with modular cabinetry' },
+  { src: p('/interior-4.webp'), alt: 'Qalimoz dining area interior design with bespoke furniture' },
 ];
 
 export default function InteriorSection({ wa, openModal }) {

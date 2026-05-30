@@ -1,4 +1,5 @@
 import React from 'react';
+import { p } from '../path';
 
 export default function FurnitureSection({ wa, openModal }) {
   return (
@@ -6,10 +7,10 @@ export default function FurnitureSection({ wa, openModal }) {
       <div className="container">
         <div className="furniture-grid">
           <div className="furniture-images-grid reveal">
-            <div className="img-clickable" onClick={() => openModal('/furniture-1.webp', 'Qalimoz custom furniture — premium wood finish dining table')}><img src="/furniture-1.webp" alt="Qalimoz custom furniture — premium wood finish dining table" className="furniture-img" loading="lazy" width="400" height="300" /></div>
-            <div className="img-clickable" onClick={() => openModal('/furniture-2.webp', 'Qalimoz handcrafted wooden sofa set with upholstery')}><img src="/furniture-2.webp" alt="Qalimoz handcrafted wooden sofa set with upholstery" className="furniture-img" loading="lazy" width="400" height="300" /></div>
-            <div className="img-clickable" onClick={() => openModal('/furniture-3.webp', 'Qalimoz premium furniture — custom bed frame design')}><img src="/furniture-3.webp" alt="Qalimoz premium furniture — custom bed frame design" className="furniture-img" loading="lazy" width="400" height="300" /></div>
-            <div className="img-clickable" onClick={() => openModal('/furniture-6.webp', 'Qalimoz artisan furniture — handcrafted wardrobe')}><img src="/furniture-6.webp" alt="Qalimoz artisan furniture — handcrafted wardrobe" className="furniture-img" loading="lazy" width="400" height="300" /></div>
+            <div className="img-clickable" onClick={() => openModal(p('/furniture-1.webp'), 'Qalimoz custom furniture — premium wood finish dining table')}><img src="/furniture-1.webp" alt="Qalimoz custom furniture — premium wood finish dining table" className="furniture-img" loading="lazy" width="400" height="300" /></div>
+            <div className="img-clickable" onClick={() => openModal(p('/furniture-2.webp'), 'Qalimoz handcrafted wooden sofa set with upholstery')}><img src="/furniture-2.webp" alt="Qalimoz handcrafted wooden sofa set with upholstery" className="furniture-img" loading="lazy" width="400" height="300" /></div>
+            <div className="img-clickable" onClick={() => openModal(p('/furniture-3.webp'), 'Qalimoz premium furniture — custom bed frame design')}><img src="/furniture-3.webp" alt="Qalimoz premium furniture — custom bed frame design" className="furniture-img" loading="lazy" width="400" height="300" /></div>
+            <div className="img-clickable" onClick={() => openModal(p('/furniture-6.webp'), 'Qalimoz artisan furniture — handcrafted wardrobe')}><img src="/furniture-6.webp" alt="Qalimoz artisan furniture — handcrafted wardrobe" className="furniture-img" loading="lazy" width="400" height="300" /></div>
           </div>
           <div className="reveal reveal-delay-1">
             <div className="furniture-eyebrow" aria-label="Furniture services">Qalimoz Furnitures</div>

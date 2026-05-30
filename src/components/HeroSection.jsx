@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import StickyFrameStack from './StickyFrameStack';
+import { p } from '../path';
 
-const LANDSCAPE_VIDEO = '/frames/landscape-animation.mp4';
-const PORTRAIT_VIDEO = '/frames/portrait-animation.mp4';
+const LANDSCAPE_VIDEO = p('/frames/landscape-animation.mp4');
+const PORTRAIT_VIDEO = p('/frames/portrait-animation.mp4');
 
 function getOrientation() {
   if (window.screen?.orientation?.type) return window.screen.orientation.type;
@@ -326,8 +327,8 @@ export default function HeroSection({ wa }) {
         if (phaseRef.current === 0) {
           phaseRef.current = 1;
           const endFrame = isLandscape(activeOrientation.current)
-            ? '/frames/end-landscape.webp'
-            : '/frames/end-portrait.webp';
+            ? p('/frames/end-landscape.webp')
+            : p('/frames/end-portrait.webp');
           heroRef.current.style.backgroundImage = `url(${endFrame})`;
           heroRef.current.style.backgroundSize = 'cover';
           heroRef.current.style.backgroundPosition = 'center';
@@ -383,8 +384,8 @@ export default function HeroSection({ wa }) {
     if (rafId.current) cancelAnimationFrame(rafId.current);
 
     const endFrame = isLandscape(activeOrientation.current)
-      ? '/frames/end-landscape.webp'
-      : '/frames/end-portrait.webp';
+      ? p('/frames/end-landscape.webp')
+      : p('/frames/end-portrait.webp');
     heroEl.style.backgroundImage = `url(${endFrame})`;
     heroEl.style.backgroundSize = 'cover';
     heroEl.style.backgroundPosition = 'center';
