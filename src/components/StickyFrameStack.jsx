@@ -41,8 +41,6 @@ export default function StickyFrameStack({ wa }) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
   }
 
   function drawFrame(index) {

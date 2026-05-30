@@ -208,6 +208,18 @@ section { position: relative; }
    On release it becomes position:relative and sits in normal document flow.
    Only class-based overrides for responsive text sizing live here. */
 
+#home {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (orientation: portrait) {
+  #home { background-image: url(/frames/stack-portrait/frame_04.webp); }
+}
+@media (orientation: landscape) {
+  #home { background-image: url(/frames/stack-landscape/frame_01.webp); }
+}
+
 .hero-sub {
   font-size: clamp(15px, 1.1vw, 17px);
   color: rgba(255,255,255,0.6);
