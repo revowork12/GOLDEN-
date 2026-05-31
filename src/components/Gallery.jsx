@@ -32,7 +32,7 @@ const categories = [
       { src: CUSHION_IMG('06_04_41 AM'), alt: 'Premium sofa design 4' },
       { src: CUSHION_IMG('06_05_53 AM'), alt: 'Premium sofa design 5' },
       { src: CUSHION_IMG('06_08_04 AM'), alt: 'Premium sofa design 6' },
-      { src: p('/frame-7.png'), alt: 'Premium sofa design 7' },
+      { src: p('/frame-7.webp'), alt: 'Premium sofa design 7' },
       { src: CUSHION_IMG('06_55_54 AM'), alt: 'Premium sofa design 8' },
     ]
   },
