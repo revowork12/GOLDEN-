@@ -18,11 +18,10 @@ export default function Header({ wa }) {
   }, [menuOpen]);
 
   const links = [
-    { label: 'Furnitures', href: '#furniture' },
-    { label: 'Interiors', href: '#interiors' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Process', href: '#process' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Furnitures', href: '/#furniture' },
+    { label: 'Interiors', href: '/#interiors' },
+    { label: 'Gallery', href: '/#gallery' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (

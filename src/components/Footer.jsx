@@ -28,12 +28,13 @@ const Footer = React.forwardRef((props, ref) => {
           <a href="mailto:hello@qalimoz.com" aria-label="Email Qalimoz">hello@qalimoz.com</a>
           <a href="tel:+919605157123" aria-label="Call Qalimoz at +91 96051 57123">+91 96051 57123</a>
           <span style={{display:'block',fontSize:'14px',color:'rgba(255,255,255,0.4)'}} itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-            <span itemProp="addressLocality">Kerala</span>, <span itemProp="addressRegion">Kerala</span>, <span itemProp="addressCountry">India</span>
+            <span itemProp="addressLocality">Kollam</span>, <span itemProp="addressRegion">KL</span>, <span itemProp="addressCountry">India</span>
           </span>
+          <span style={{display:'block',fontSize:'13px',color:'rgba(255,255,255,0.3)',marginTop:'4px'}}>Serving Thiruvananthapuram, Karunagappally & Kayamkulam</span>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2025 Qalimoz Groups. All rights reserved.</p>
+        <p>© 2026 Qalimoz Groups. All rights reserved.</p>
         <p style={{color:'rgba(255,255,255,0.2)',fontSize:'12px'}}>Built with care</p>
       </div>
     </footer>
