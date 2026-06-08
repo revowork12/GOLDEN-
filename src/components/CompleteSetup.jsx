@@ -23,14 +23,11 @@ export default function CompleteSetup() {
       <div className="container-site">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative reveal">
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gold/15 to-navy/5 border border-gold/10 flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🔧</span>
-                </div>
-                <p className="text-slate/40 text-sm">Complete Setup Services</p>
-              </div>
-            </div>
+            <img
+              src="/images/setup.webp"
+              alt="Complete Setup Services"
+              className="w-full aspect-[4/3] object-cover rounded-2xl border border-gold/10"
+            />
           </div>
           <div className="reveal reveal-delay-1">
             <span className="section-label">Complete Setup</span>

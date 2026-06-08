@@ -30,12 +30,11 @@ export default function AboutGolden() {
             </div>
           </div>
           <div className="relative reveal reveal-delay-1">
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gold/20 to-navy/10 border border-gold/10 flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="font-display text-6xl text-gold/30 mb-4">GF</div>
-                <p className="text-slate/40 text-sm">Golden Furniture — Premium Institutions</p>
-              </div>
-            </div>
+            <img
+              src="/images/ceo-office.webp"
+              alt="Golden Furniture — Premium Institutions"
+              className="w-full aspect-[4/3] object-cover rounded-2xl border border-gold/10"
+            />
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gold/10 rounded-full blur-3xl" />
           </div>
         </div>
