@@ -21,7 +21,7 @@ const Contact = forwardRef(({ wa }, ref) => {
                 <div>
                   <p className="text-white/70 text-sm font-medium">WhatsApp / Call</p>
                   <a href={wa("Hi Golden Furniture, I'm interested in your solutions.")} target="_blank" rel="noopener noreferrer" className="text-gold text-sm hover:underline">
-                    +91 9XXX XXX XXX
+                    +91 81398 87069
                   </a>
                 </div>
               </div>
@@ -40,41 +40,16 @@ const Contact = forwardRef(({ wa }, ref) => {
               </div>
             </div>
           </div>
-          <div className="reveal reveal-delay-1">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/5">
-              <h3 className="font-display text-xl font-bold text-white mb-6">Send a Message</h3>
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
-                />
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
-                />
-                <input
-                  type="text"
-                  placeholder="Institution Name"
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
-                />
-                <textarea
-                  placeholder="Tell us about your requirements..."
-                  rows={4}
-                  className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold/50 transition-colors resize-none"
-                />
-                <a
-                  href={wa("Hi Golden Furniture, I'd like to know more about your institutional furniture solutions.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full justify-center !py-4"
-                >
-                  Send via WhatsApp
-                  <span className="w-6 h-6 rounded-full bg-navy/15 flex items-center justify-center text-xs">⟶</span>
-                </a>
-              </div>
-            </div>
+          <div className="reveal reveal-delay-1 flex items-center justify-center h-full">
+            <a
+              href={wa("Hi Golden Furniture, I'd like to know more about your institutional furniture solutions.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-lg !px-12 !py-6"
+            >
+              Get in Touch
+              <span className="w-6 h-6 rounded-full bg-navy/15 flex items-center justify-center text-xs">⟶</span>
+            </a>
           </div>
         </div>
       </div>
